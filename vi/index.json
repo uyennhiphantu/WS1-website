@@ -4,7 +4,7 @@
 	"title": "Bắt đầu với Amazon Athena",
 	"tags": [],
 	"description": "",
-	"content": "Làm việc với Amazon Athena Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon Athena.\nAmazon Athena là dịch vụ interactive analytics, serverless, được xây dựng trên các open-source frameworks, hỗ trợ các định dạng file và open-table. Athena cung cấp một cách đơn giản, linh hoạt để phân tích hàng petabyte dữ liệu nơi nó tồn tại. Phân tích dữ liệu hoặc xây dựng ứng dụng từ data lake Amazon Simple Storage Service (S3) và 30 nguồn dữ liệu, bao gồm nguồn dữ liệu on-premises hoặc các hệ thống đám mây khác sử dụng SQL hoặc Python. Athena được xây dựng trên các công cụ Trino và Presto mã nguồn mở cũng như các Apache Spark frameworks mà không cần nỗ lực cung cấp hoặc cấu hình.\nNội dung Giới thiệu Các bước chuẩn bị Tạo kết nối đến máy chủ EC2 Quản lý session logs Port Forwarding Dọn dẹp tài nguyên "
+	"content": "Làm việc với Amazon Athena Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon Athena.\nAmazon Athena là dịch vụ interactive analytics, serverless, được xây dựng trên các open-source frameworks, hỗ trợ các định dạng file và open-table. Athena cung cấp một cách đơn giản, linh hoạt để phân tích hàng petabyte dữ liệu nơi nó tồn tại. Phân tích dữ liệu hoặc xây dựng ứng dụng từ data lake Amazon Simple Storage Service (S3) và 30 nguồn dữ liệu, bao gồm nguồn dữ liệu on-premises hoặc các hệ thống đám mây khác sử dụng SQL hoặc Python. Athena được xây dựng trên các công cụ Trino và Presto mã nguồn mở cũng như các Apache Spark frameworks mà không cần nỗ lực cung cấp hoặc cấu hình.\nNội dung Amazon Athena là gì? Các bước chuẩn bị Athena Basics ETL và Athena CTAS Athena Workgroups Trực quan hóa bằng Quicksight trên Amazon Athena Dọn dẹp tài nguyên "
 },
 {
 	"uri": "/vi/1-athena/",
@@ -39,7 +39,7 @@
 	"title": "Athena Basics",
 	"tags": [],
 	"description": "",
-	"content": "DataSets Để thể hiện các tính năng của Athena Basics, một bộ dữ liệu tổng hợp đơn giản sẽ được sử dụng. Chúng ta sẽ sử dụng bộ dữ liệu sau cho bài lab của Athena Basics.\nKhách hàng - Tập hợp các bản ghi khách hàng tổng hợp (~96.000)\nBán hàng - Một tập hợp các hồ sơ bán hàng tổng hợp được liên kết ngược lại với khách hàng. (~287.000)\nPhần nội dung của Athena Basics bao gồm các mục chính như sau:\nNội dung 3.1 Điều kiện tiên quyết 3.2 Tải bộ dữ liệu 3.3 Tạo bảng 3.4 Tạo bảng với Glue 3.5 Tạo Chế độ xem 3.6 Tái sử dụng kết quả truy vấn 3.7 Kết quả và lịch sử truy vấn 3.8 ETL và Athena CTAS 3.9 Athena Workgroups 3.10 Trực quan hoá bằng QuickSight trên Athena "
+	"content": "DataSets Để thể hiện các tính năng của Athena Basics, một bộ dữ liệu tổng hợp đơn giản sẽ được sử dụng. Chúng ta sẽ sử dụng bộ dữ liệu sau cho bài lab của Athena Basics.\nKhách hàng - Tập hợp các bản ghi khách hàng tổng hợp (~96.000)\nBán hàng - Một tập hợp các hồ sơ bán hàng tổng hợp được liên kết ngược lại với khách hàng. (~287.000)\nPhần nội dung của Athena Basics bao gồm các mục chính như sau:\nNội dung 3.1 Điều kiện tiên quyết 3.2 Tải bộ dữ liệu 3.3 Tạo bảng 3.4 Tạo bảng với Glue 3.5 Tạo Chế độ xem 3.6 Tái sử dụng kết quả truy vấn 3.7 Kết quả và lịch sử truy vấn "
 },
 {
 	"uri": "/vi/3-basics/3.3-tao-bang/",
