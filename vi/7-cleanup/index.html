@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Kết quả và lịch sử truy vấn :: AWS System Manager</title>
+    <title>Dọn dẹp tài nguyên   :: AWS System Manager</title>
 
     
     <link href="/css/nucleus.css?1702914414" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/vi/3-basics/3.7-his-re-query/">
+  <body class="" data-url="/vi/7-cleanup/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -135,7 +135,7 @@
   
     
     <li data-nav-id="/vi/3-basics/" title="Athena Basics" class="dd-item 
-        parent
+        
         
         
         ">
@@ -335,7 +335,7 @@
     
     <li data-nav-id="/vi/3-basics/3.7-his-re-query/" title="Kết quả và lịch sử truy vấn" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/vi/3-basics/3.7-his-re-query/">
@@ -448,7 +448,7 @@
     
     <li data-nav-id="/vi/7-cleanup/" title="Dọn dẹp tài nguyên  " class="dd-item 
         
-        
+        active
         
         ">
       <a href="/vi/7-cleanup/">
@@ -499,7 +499,7 @@
                   
                     
                     
-                      <option id="en" value="/3-basics/3.7-his-re-query/">English</option>
+                      <option id="en" value="/7-cleanup/">English</option>
                     
                   
               
@@ -513,7 +513,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/3-basics/3.7-his-re-query/" selected>Tiếng Việt</option>
+                      <option id="vi" value="/vi/7-cleanup/" selected>Tiếng Việt</option>
                     
                   
               
@@ -601,13 +601,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > <a href='/vi/3-basics/'>Athena Basics</a> > Kết quả và lịch sử truy vấn
-          
-        
+            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > Dọn dẹp tài nguyên  
           
         
           
@@ -618,7 +612,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -634,7 +636,7 @@
           
             <h1>
               
-              Kết quả và lịch sử truy vấn
+              Dọn dẹp tài nguyên  
             </h1>
           
 
@@ -642,20 +644,28 @@
 
 
 
-	<hr>
-<p>Amazon Athena tự động lưu trữ kết quả truy vấn và thông tin siêu dữ liệu cho mỗi truy vấn chạy ở trong kết quả truy vấn mà bạn có thể chỉ định trong Amazon S3. Nếu cần, bạn có thể truy cập vào các tệp ở đây để làm việc với chúng. Bạn cũng có thể tải xuống tệp kết quả truy vấn trực tiếp từ bảng điều khiển Athena.</p>
+	<p>Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.</p>
+<h4 id="xóa-s3-bucket">Xóa S3 bucket</h4>
 <ol>
-<li>Để xem lịch sử truy vấn, nhấp vào <strong>Recent queries</strong>. Chúng ta sẽ có thể xem tất cả các truy vấn được gửi trong workgroup, State, Run Time và Data scanned. Chúng ta cũng có thể chọn ID truy vấn và nhấp vào Download results để tải xuống dưới dạng dữ liệu csv.
-<img src="hinh%2048.png" alt="image"></li>
-<li>Thông tin chi tiết về từng truy vấn chạy cũng được lưu vào Athena results bucket của chúng ta. Trong thanh tìm kiếm ở đầu màn hình tìm <strong>S3</strong> và nhấp vào <strong>S3</strong> trong kết quả tìm kiếm
-<img src="hinh%2049.png" alt="image"></li>
-<li>Xác định vị trí bucket đã được tạo cho workshop. Nó sẽ được đặt tên là <strong>athena-workshop-[số tài khoản AWS của bạn]</strong> ví dụ: <em>athena-workshop-12345678910.</em> Nhấp vào tên bucket để mở nó.</li>
-<li>Có một prefix cho mỗi Saved Query đã được chạy và một thư mục Unsaved. Thư mục Unsaved lưu trữ kết quả của các truy vấn unsaved được thực hiện từ bảng điều khiển Athena. <strong>Lưu ý:</strong> <em>Nếu không thấy thư mục Unsaved, bạn có thể sao chép một trong các truy vấn trước đó vào Query tab mới trong Athena, chạy truy vấn đó rồi kiểm tra lại trong S3 bucket.</em>
-<img src="hinh%2050.png" alt="image"></li>
-<li>Nhấp vào <strong>Athena_compare_sale</strong> prefix, sau đó nhấp vào prefix Year,prefix Month và prefix Day.</li>
-<li>Bạn sẽ thấy kết quả được lưu trữ với id truy vấn.
-<img src="hinh%2051.png" alt="image"></li>
+<li>Truy cập <a href="https://s3.console.aws.amazon.com/s3/home?region=us-east-1">giao diện quản trị dịch vụ S3</a>. Chúng ta sẽ thấy S3 bucket được tạo ra từ Cloudformation là athena-workshop-
+<img src="hinh%2074.png" alt="Alt text"></li>
+<li>Đầu tiên, đảm bảo rằng S3 bucket đã được làm sạch data bằng cách nhấn vào  Empty.
+<img src="hinh%2075.png" alt="Alt text"></li>
+<li>Nhập <em>permanently delete</em> vào ô để xác nhận làm sạch dữ liệu. Sau đó chọn Empty.
+<img src="hinh%2076.png" alt="Alt text"></li>
+<li>Quay lại danh sách S3 bucket, chọn athena-workshop-, sau đó nhấn Delete
+<img src="hinh%2077.png" alt="Alt text"></li>
+<li>Tiếp đó, nhập tên của S3 bucket <em>athena-workshop-</em>, rồi chọn Delete.
+<img src="hinh%2078.png" alt="Alt text"></li>
 </ol>
+<h4 id="xóa-cloudformation">Xóa Cloudformation</h4>
+<ol>
+<li>Truy cập <a href="https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringText=&amp;filteringStatus=active&amp;viewNested=true">giao diện quản trị dịch vụ Cloudformation</a>. Sau đó chúng ta sẽ thấy mục stack đã tạo <em>athena-workshop</em>
+<img src="hinh%2073.png" alt="Alt text"></li>
+<li>Chọn <em>athena-workshop</em> sau đó nhấn Delete
+<img src="hinh%2079.png" alt="Alt text"></li>
+</ol>
+<p>Vậy là chúng ta đã hoàn thành xong bài Workshop cơ bản của Amazon Athena.</p>
 
 
 
@@ -731,7 +741,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -746,9 +755,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -846,7 +852,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -865,9 +870,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -916,6 +918,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -937,10 +940,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/3-basics/3.6-reuse-query/" title="Tái sử dụng Kết quả Truy vấn"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/6-qs/" title="Trực quan hoá bằng QuickSight trên Amazon Athena"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-etl/" title="ETL và Athena CTAS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/1-athena/" title="Amazon Athena là gì?" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

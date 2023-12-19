@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Kết quả và lịch sử truy vấn :: AWS System Manager</title>
+    <title>Amazon Athena là gì? :: AWS System Manager</title>
 
     
     <link href="/css/nucleus.css?1702914414" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/vi/3-basics/3.7-his-re-query/">
+  <body class="" data-url="/vi/1-athena/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -84,7 +84,7 @@
     
     <li data-nav-id="/vi/1-athena/" title="Amazon Athena là gì?" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/vi/1-athena/">
@@ -135,7 +135,7 @@
   
     
     <li data-nav-id="/vi/3-basics/" title="Athena Basics" class="dd-item 
-        parent
+        
         
         
         ">
@@ -335,7 +335,7 @@
     
     <li data-nav-id="/vi/3-basics/3.7-his-re-query/" title="Kết quả và lịch sử truy vấn" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/vi/3-basics/3.7-his-re-query/">
@@ -499,7 +499,7 @@
                   
                     
                     
-                      <option id="en" value="/3-basics/3.7-his-re-query/">English</option>
+                      <option id="en" value="/1-athena/">English</option>
                     
                   
               
@@ -513,7 +513,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/3-basics/3.7-his-re-query/" selected>Tiếng Việt</option>
+                      <option id="vi" value="/vi/1-athena/" selected>Tiếng Việt</option>
                     
                   
               
@@ -601,13 +601,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > <a href='/vi/3-basics/'>Athena Basics</a> > Kết quả và lịch sử truy vấn
-          
-        
+            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > Amazon Athena là gì?
           
         
           
@@ -618,7 +612,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#start-querying-instantly">Start Querying Instantly</a></li>
+        <li><a href="#pay-per-query">Pay Per Query</a></li>
+        <li><a href="#open-powerful-standard">Open, Powerful, Standard</a></li>
+        <li><a href="#fast-really-fast">Fast, Really Fast</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -634,7 +639,7 @@
           
             <h1>
               
-              Kết quả và lịch sử truy vấn
+              Amazon Athena là gì?
             </h1>
           
 
@@ -642,20 +647,16 @@
 
 
 
-	<hr>
-<p>Amazon Athena tự động lưu trữ kết quả truy vấn và thông tin siêu dữ liệu cho mỗi truy vấn chạy ở trong kết quả truy vấn mà bạn có thể chỉ định trong Amazon S3. Nếu cần, bạn có thể truy cập vào các tệp ở đây để làm việc với chúng. Bạn cũng có thể tải xuống tệp kết quả truy vấn trực tiếp từ bảng điều khiển Athena.</p>
-<ol>
-<li>Để xem lịch sử truy vấn, nhấp vào <strong>Recent queries</strong>. Chúng ta sẽ có thể xem tất cả các truy vấn được gửi trong workgroup, State, Run Time và Data scanned. Chúng ta cũng có thể chọn ID truy vấn và nhấp vào Download results để tải xuống dưới dạng dữ liệu csv.
-<img src="hinh%2048.png" alt="image"></li>
-<li>Thông tin chi tiết về từng truy vấn chạy cũng được lưu vào Athena results bucket của chúng ta. Trong thanh tìm kiếm ở đầu màn hình tìm <strong>S3</strong> và nhấp vào <strong>S3</strong> trong kết quả tìm kiếm
-<img src="hinh%2049.png" alt="image"></li>
-<li>Xác định vị trí bucket đã được tạo cho workshop. Nó sẽ được đặt tên là <strong>athena-workshop-[số tài khoản AWS của bạn]</strong> ví dụ: <em>athena-workshop-12345678910.</em> Nhấp vào tên bucket để mở nó.</li>
-<li>Có một prefix cho mỗi Saved Query đã được chạy và một thư mục Unsaved. Thư mục Unsaved lưu trữ kết quả của các truy vấn unsaved được thực hiện từ bảng điều khiển Athena. <strong>Lưu ý:</strong> <em>Nếu không thấy thư mục Unsaved, bạn có thể sao chép một trong các truy vấn trước đó vào Query tab mới trong Athena, chạy truy vấn đó rồi kiểm tra lại trong S3 bucket.</em>
-<img src="hinh%2050.png" alt="image"></li>
-<li>Nhấp vào <strong>Athena_compare_sale</strong> prefix, sau đó nhấp vào prefix Year,prefix Month và prefix Day.</li>
-<li>Bạn sẽ thấy kết quả được lưu trữ với id truy vấn.
-<img src="hinh%2051.png" alt="image"></li>
-</ol>
+	<p>Amazon Athena là một dịch vụ truy vấn giúp dễ dàng tương tác và phân tích dữ liệu một cách hiệu quả trong Amazon S3 bằng cách sử dụng SQL tiêu chuẩn (ANSI SQL). Chúng ta không cần thực hiện thao tác Trích xuất-Chuyển đổi-Tải (ETL) để nhập dữ liệu vào Athena. Thay vào đó, xác định các lược đồ trỏ đến dữ liệu nằm trong Amazon S3 và để ngay lập tức bắt đầu đưa ra truy vấn cũng như nhận thông tin chuyên sâu. Athena không có máy chủ nên không có cơ sở hạ tầng để thiết lập, cung cấp hoặc quản lý nên bạn sẽ chỉ trả tiền cho những truy vấn mà bạn chạy.</p>
+<p>Điều này cho phép bất kỳ ai có kiến thức về SQL có thể nhanh chóng đánh giá các tập dữ liệu quy mô lớn. Athena được tích hợp sẵn với AWS Glue Data Catalog, cho phép bạn xây dựng kho lưu trữ siêu dữ liệu chung trên nhiều dịch vụ, thu thập thông tin nguồn dữ liệu để định vị schema, và cập nhật Catalog của bạn với các định nghĩa về modified table và partition, đồng thời duy trì phiên bản schema.</p>
+<h3 id="start-querying-instantly">Start Querying Instantly</h3>
+<p>Amazon Athena là một hệ thống không có máy chủ, bạn có thể nhanh chóng truy vấn dữ liệu của mình mà không cần phải thiết lập và quản lý bất kỳ máy chủ hoặc kho dữ liệu nào. Chỉ cần trỏ tới dữ liệu của bạn trong Amazon S3, xác định schema và bắt đầu truy vấn bằng trình chỉnh sửa truy vấn tích hợp sẵn. Amazon Athena cho phép bạn khai thác tất cả dữ liệu của mình trong S3 mà không cần thiết lập các quy trình phức tạp để trích xuất, chuyển đổi và tải dữ liệu (ETL).</p>
+<h3 id="pay-per-query">Pay Per Query</h3>
+<p>Bạn chỉ trả tiền cho dữ liệu được quét (data scanned) bởi Amazon Athena cũng như những truy vấn mà bạn chạy. Với mỗi terabyte mà bạn truy vấn, bạn sẽ bị tính phí là 5$. Bạn có thể tiết kiệm từ 30% đến 90% chi phí cho mỗi truy vấn và đạt được hiệu suất tốt hơn bằng cách nén, phân vùng và chuyển đổi dữ liệu của mình thành định dạng cột. Athena truy vấn dữ liệu trực tiếp trên Amazon S3. Không có phí lưu trữ bổ sung ngoài S3.</p>
+<h3 id="open-powerful-standard">Open, Powerful, Standard</h3>
+<p>Amazon Athena được xây dựng trên cơ sở của Presto và sử dụng Presto kết hợp với hỗ trợ cho ANSI SQL. Nó có khả năng hoạt động với nhiều định dạng dữ liệu chuẩn như CSV, JSON, ORC, Avro và Parquet. Athena được thiết kế đặc biệt để truy vấn nhanh chóng hoặc truy vấn đơn (ad-hoc query), bên cạnh đó nó cũng có khả năng xử lý phân tích phức tạp, bao gồm các large joins, window functions và cấu trúc dữ liệu mảng (arrays). Amazon Athena luôn sẵn sàng hỗ trợ và thực hiện các truy vấn bằng cách sử dụng tài nguyên tính toán trên nhiều cơ sở và thiết bị trong từng cơ sở. Nó lưu trữ dữ liệu cơ bản trên Amazon S3, đảm bảo tính sẵn có và bền bỉ của dữ liệu.</p>
+<h3 id="fast-really-fast">Fast, Really Fast</h3>
+<p>Hiệu suất tương tác cao ngay cả đối với các tập dữ liệu lớn. Với Amazon Athena, bạn không cần phải lo lắng về việc có đủ tài nguyên điện toán hay nó có được hiệu suất truy vấn tương tác nhanh chóng hay không. Bởi vì Amazon Athena tự động thực hiện các truy vấn song song nên hầu hết kết quả đều được trả về trong vòng vài giây.</p>
 
 
 
@@ -696,8 +697,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -709,38 +708,6 @@
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
                     
                         
             
@@ -771,11 +738,10 @@
 
                     
                     
+                        
+                    
                     
 
-                    
-            
-        
                     
                         
             
@@ -846,6 +812,37 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -865,9 +862,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -937,10 +931,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/3-basics/3.6-reuse-query/" title="Tái sử dụng Kết quả Truy vấn"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/" title="Bắt đầu với Amazon Athena"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-etl/" title="ETL và Athena CTAS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/2-prepare/" title="Các bước chuẩn bị" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

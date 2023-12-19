@@ -15,16 +15,16 @@
                 href="/vi/"
                 />
   </url><url>
-    <loc>/vi/1-introduce/1.1-athena/</loc>
+    <loc>/vi/1-athena/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-introduce/1.1-athena/"
+                href="/1-athena/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-introduce/1.1-athena/"
+                href="/vi/1-athena/"
                 />
   </url><url>
     <loc>/vi/3-basics/3.1-public-instance/</loc>
@@ -37,18 +37,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="/vi/3-basics/3.1-public-instance/"
-                />
-  </url><url>
-    <loc>/vi/1-introduce/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/1-introduce/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/1-introduce/"
                 />
   </url><url>
     <loc>/vi/2-prepare/</loc>
@@ -99,17 +87,16 @@
                 href="/vi/3-basics/3.3-tao-bang/"
                 />
   </url><url>
-    <loc>/vi/4-cleanup/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+    <loc>/vi/4-etl/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/4-cleanup/"
+                href="/4-etl/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/4-cleanup/"
+                href="/vi/4-etl/"
                 />
   </url><url>
     <loc>/vi/3-basics/3.4-tao-bang-glue/</loc>
@@ -122,6 +109,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="/vi/3-basics/3.4-tao-bang-glue/"
+                />
+  </url><url>
+    <loc>/vi/5-athena-wg/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/5-athena-wg/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/5-athena-wg/"
                 />
   </url><url>
     <loc>/vi/3-basics/3.5-tao-view/</loc>
@@ -148,6 +147,31 @@
                 href="/vi/3-basics/3.6-reuse-query/"
                 />
   </url><url>
+    <loc>/vi/6-qs/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/6-qs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/6-qs/"
+                />
+  </url><url>
+    <loc>/vi/7-cleanup/</loc>
+    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/7-cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="/vi/7-cleanup/"
+                />
+  </url><url>
     <loc>/vi/3-basics/3.7-his-re-query/</loc>
     <xhtml:link
                 rel="alternate"
@@ -158,42 +182,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="/vi/3-basics/3.7-his-re-query/"
-                />
-  </url><url>
-    <loc>/vi/3-basics/3.8-etl-athe/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/3-basics/3.8-etl-athe/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/3-basics/3.8-etl-athe/"
-                />
-  </url><url>
-    <loc>/vi/3-basics/3.9-athena-wg/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/3-basics/3.9-athena-wg/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/3-basics/3.9-athena-wg/"
-                />
-  </url><url>
-    <loc>/vi/3-basics/3.10-qs/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/3-basics/3.10-qs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/3-basics/3.10-qs/"
                 />
   </url><url>
     <loc>/vi/categories/</loc>

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Kết quả và lịch sử truy vấn :: AWS System Manager</title>
+    <title>Athena Workgroups :: AWS System Manager</title>
 
     
     <link href="/css/nucleus.css?1702914414" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/vi/3-basics/3.7-his-re-query/">
+  <body class="" data-url="/vi/5-athena-wg/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -135,7 +135,7 @@
   
     
     <li data-nav-id="/vi/3-basics/" title="Athena Basics" class="dd-item 
-        parent
+        
         
         
         ">
@@ -335,7 +335,7 @@
     
     <li data-nav-id="/vi/3-basics/3.7-his-re-query/" title="Kết quả và lịch sử truy vấn" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/vi/3-basics/3.7-his-re-query/">
@@ -396,7 +396,7 @@
     
     <li data-nav-id="/vi/5-athena-wg/" title="Athena Workgroups" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/vi/5-athena-wg/">
@@ -499,7 +499,7 @@
                   
                     
                     
-                      <option id="en" value="/3-basics/3.7-his-re-query/">English</option>
+                      <option id="en" value="/5-athena-wg/">English</option>
                     
                   
               
@@ -513,7 +513,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/3-basics/3.7-his-re-query/" selected>Tiếng Việt</option>
+                      <option id="vi" value="/vi/5-athena-wg/" selected>Tiếng Việt</option>
                     
                   
               
@@ -601,13 +601,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > <a href='/vi/3-basics/'>Athena Basics</a> > Kết quả và lịch sử truy vấn
-          
-        
+            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > Athena Workgroups
           
         
           
@@ -618,7 +612,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#thực-thi-các-hạn-chế-về-chi-phí">Thực thi các hạn chế về chi phí</a></li>
+        <li><a href="#sử-dụng-workgroups-để-tách-người-dùng-nhóm-hoặc-ứng-dụng-truy-vấn-thành-các-nhóm">Sử dụng Workgroups để tách người dùng, nhóm hoặc ứng dụng truy vấn thành các nhóm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -634,7 +637,7 @@
           
             <h1>
               
-              Kết quả và lịch sử truy vấn
+              Athena Workgroups
             </h1>
           
 
@@ -643,19 +646,105 @@
 
 
 	<hr>
-<p>Amazon Athena tự động lưu trữ kết quả truy vấn và thông tin siêu dữ liệu cho mỗi truy vấn chạy ở trong kết quả truy vấn mà bạn có thể chỉ định trong Amazon S3. Nếu cần, bạn có thể truy cập vào các tệp ở đây để làm việc với chúng. Bạn cũng có thể tải xuống tệp kết quả truy vấn trực tiếp từ bảng điều khiển Athena.</p>
+<p>Trong Amazon Athena, bạn có thể sử dụng workgroups để chia người dùng, nhóm, ứng dụng hoặc khối lượng công việc, để đặt giới hạn về lượng dữ liệu mà mỗi truy vấn hoặc toàn bộ workgroups có thể xử lý và theo dõi chi phí. Vì workgroups hoạt động như tài nguyên nên bạn có thể sử dụng các chính sách dựa trên danh tính ở cấp độ tài nguyên để kiểm soát quyền truy cập vào workgroups cụ thể.</p>
+<p><strong>Viewings  Cloudwatch Metrics</strong></p>
+<p>Trong bài lab Tạo bảng, chúng ta đã bật số liệu Cloudwatch cho primary workgroup. Bây giờ, hãy xem số liệu Cloudwatch cho primary workgroup của chúng ta trong bảng điều khiển Athena.</p>
 <ol>
-<li>Để xem lịch sử truy vấn, nhấp vào <strong>Recent queries</strong>. Chúng ta sẽ có thể xem tất cả các truy vấn được gửi trong workgroup, State, Run Time và Data scanned. Chúng ta cũng có thể chọn ID truy vấn và nhấp vào Download results để tải xuống dưới dạng dữ liệu csv.
-<img src="hinh%2048.png" alt="image"></li>
-<li>Thông tin chi tiết về từng truy vấn chạy cũng được lưu vào Athena results bucket của chúng ta. Trong thanh tìm kiếm ở đầu màn hình tìm <strong>S3</strong> và nhấp vào <strong>S3</strong> trong kết quả tìm kiếm
-<img src="hinh%2049.png" alt="image"></li>
-<li>Xác định vị trí bucket đã được tạo cho workshop. Nó sẽ được đặt tên là <strong>athena-workshop-[số tài khoản AWS của bạn]</strong> ví dụ: <em>athena-workshop-12345678910.</em> Nhấp vào tên bucket để mở nó.</li>
-<li>Có một prefix cho mỗi Saved Query đã được chạy và một thư mục Unsaved. Thư mục Unsaved lưu trữ kết quả của các truy vấn unsaved được thực hiện từ bảng điều khiển Athena. <strong>Lưu ý:</strong> <em>Nếu không thấy thư mục Unsaved, bạn có thể sao chép một trong các truy vấn trước đó vào Query tab mới trong Athena, chạy truy vấn đó rồi kiểm tra lại trong S3 bucket.</em>
-<img src="hinh%2050.png" alt="image"></li>
-<li>Nhấp vào <strong>Athena_compare_sale</strong> prefix, sau đó nhấp vào prefix Year,prefix Month và prefix Day.</li>
-<li>Bạn sẽ thấy kết quả được lưu trữ với id truy vấn.
-<img src="hinh%2051.png" alt="image"></li>
+<li>Từ bảng điều khiển Athena, chọn <strong>Workgroups</strong> từ menu bên trái.</li>
+<li>Chọn <strong>primary</strong> workgroup từ danh sách workgroups</li>
+<li>Nhấp vào tab <strong>Metrics</strong> trên màn hình chi tiết Workgroups. Bạn sẽ thấy các metrics bao gồm:</li>
 </ol>
+<ul>
+<li>Total data scanned</li>
+<li>Totoal succeeded queries</li>
+<li>Total failed queries</li>
+<li>Total execution time
+<img src="image.png" alt="Alt text">
+
+<div class="notices note" ><p>Biểu đồ có thể không hiển thị nhiều điểm dữ liệu vì chúng sẽ phản ánh việc sử dụng tài khoản lab của chúng ta.</p>
+</div>
+</li>
+</ul>
+<h3 id="thực-thi-các-hạn-chế-về-chi-phí">Thực thi các hạn chế về chi phí</h3>
+<p>Chi phí cho truy vấn Athena SQL dựa trên lượng dữ liệu được quét. Với workgroups, bạn có thể thực thi các ràng buộc về chi phí cho các truy vấn bằng cách đặt lượng dữ liệu tối đa mà một truy vấn hoặc workgroups có thể quét. Điều này sẽ được thể hiện bằng cách đặt giới hạn cho workgroup, sau đó đăng nhập bằng người dùng mới để kiểm tra xem giới hạn hoạt động như thế nào.</p>
+<p>Bây giờ chúng ta sẽ đặt lượng dữ liệu tối đa có thể được quét bởi bất kỳ truy vấn nào trong workgroups.</p>
+<ol>
+<li>Trong menu bên trái, xác định vị trí và chọn <strong>Workgroups</strong>. Sau đó nhấn <strong>WorkgroupA</strong> để xem chi tiết workgroups.
+<img src="53image.png" alt="image 53"></li>
+<li>Ở mục <strong>Data Usage controls</strong> tabs, chọn <strong>Manage</strong>
+<img src="hinh%2054.png" alt="image"></li>
+<li>Đặt dữ liệu tối đa được quét bởi bất kỳ truy vấn nào trong nhóm làm việc này là 1<strong>10 Megabytes (MB)</strong>, sau đó chọn <strong>Save</strong>
+<img src="hinh%2055.png" alt="image"></li>
+</ol>
+<p><strong>Kiểm tra giới hạn workgroup</strong>
+Để kiểm tra giới hạn Workgroup mới, chúng ta sẽ đăng nhập với tư cách người dùng mới. Trước khi thực hiện việc này, bạn cần truy xuất thông tin chi tiết về người dùng mới, bao gồm mật khẩu và liên kết đăng nhập.</p>
+<ol>
+<li>Trong thanh tìm kiếm gõ <strong>Cloudformation</strong> và chọn <strong>CloudFormation</strong> từ kết quả tìm kiếm
+<img src="hinh%2056.png" alt="image"></li>
+<li>Trên bảng điều khiển CloudFormation, nhấp vào tên của workshop stack, ví dụ: athena-workshop</li>
+<li>Nhấp vào tab <strong>Outputs</strong> và bấm vào liên kết <strong>ConsolePassword</strong>. Thao tác này sẽ đưa bạn đến AWS Secrets Manager.
+<img src="hinh%2057.png" alt="image"></li>
+<li>Bấm vào link <strong>Secret Name</strong> như hình dưới đây:
+<img src="hinh%2058.png" alt="image"></li>
+<li>Chọn <strong>Retrieve secret value</strong> như hình dưới đây:
+<img src="hinh%2059.png" alt="image"></li>
+<li>Bấm vào biểu tượng sao chép để sao chép mật khẩu vào clipboard
+<img src="hinh%2060.png" alt="image"></li>
+<li>Quay lại tab đầu ra Cloudformation (tham khảo các bước 1,2,3 ở trên) và nhấp vào liên kết <strong>ConsoleLogin</strong>. Thao tác này sẽ mở trang đăng nhập bảng điều khiển AWS.</li>
+<li>Nhập các giá trị sau và nhấp vào mục <strong>Sign In</strong>
+<img src="hinh%2061.png" alt="image">
+<ol>
+<li>
+<p><strong>IAM user name:</strong> userA</p>
+</li>
+<li>
+<p><strong>Password:</strong> Sử dụng mật khẩu đã sao chép từ bước ở trên</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Sau khi bạn đã đăng nhập thành công với tư cách UserA:</p>
+<ol start="9">
+<li>
+<p>Mở bảng điều khiển Athena bằng cách nhập <strong>Athena</strong> vào thanh tìm kiếm ở đầu màn hình. Chọn <strong>Athena</strong> từ kết quả tìm kiếm.</p>
+</li>
+<li>
+<p>Nhấn vào phần cuộn xuống ở <strong>Workgroup</strong> và chọn <strong>WorkgroupA.</strong>
+<img src="hinh%2063.png" alt="Alt text"></p>
+</li>
+<li>
+<p>Nếu nhận được lời nhắc bên dưới, hãy chọn <strong>Acknowledge</strong>
+<img src="hinh%2062-1.png" alt="Alt text"></p>
+</li>
+<li>
+<p>Sao chép và dán văn bản bên dưới vào query editor.</p>
+</li>
+</ol>
+<p>``
+/* This query will fail as it exceeds the 10 MB limit */
+select * from customers_csv</p>
+<p>/* This query will succeed as it only scans 9 MB of data */
+select * from customers_parquet
+``</p>
+<ol start="13">
+<li>
+<p>Đánh dấu truy vấn đầu tiên và chọn <strong>Run</strong>. Xin lưu ý rằng truy vấn không thành công và hiển thị lỗi <strong>Bytes scanned limit was exceeded</strong>. Điều này là do truy vấn sẽ quét nhiều hơn giới hạn 10 MB mà chúng ta đã đặt cho workgroup này.
+<img src="image-2.png" alt="Alt text"></p>
+</li>
+<li>
+<p>Bây giờ hãy đánh dấu truy vấn thứ hai và nhấp vào nút <strong>Run</strong>. Lưu ý rằng truy vấn này thành công vì nó chỉ quét dưới 10 MB dữ liệu.
+<img src="hinh%2064.png" alt="Alt text"></p>
+</li>
+</ol>
+<h3 id="sử-dụng-workgroups-để-tách-người-dùng-nhóm-hoặc-ứng-dụng-truy-vấn-thành-các-nhóm">Sử dụng Workgroups để tách người dùng, nhóm hoặc ứng dụng truy vấn thành các nhóm</h3>
+<p>Chúng ta có thể sử dụng Workgroups để tách biệt các truy vấn cho người dùng, nhóm hoặc ứng dụng và áp dụng các giới hạn truy vấn khác nhau. IAM Policies có thể được sử dụng để kiểm soát quyền truy cập vào  Workgroups. Để chứng minh điều này, chúng ta sẽ thử chuyển đổi  Workgroups và xem liệu UserA có thể chạy cùng một truy vấn trong  Workgroups B hay không.</p>
+<ol start="15">
+<li>Trong danh sách cuộn xuống ở <strong>Workgroups</strong>, chọn &ldquo;WorkgroupB&rdquo;. Lưu ý rằng <strong>Error fetching workgroup</strong> có thể được hiển thị. Điều này là do UserA không có quyền họ cần để nhận tất cả thông tin chi tiết về workgroup B
+<img src="hinh%2065.png" alt="Alt text"></li>
+<li>Sao chép và dán các truy vấn từ bước 12, đánh dấu truy vấn đầu tiên và chọn <strong>Run</strong>. Lưu ý lỗi mà bạn nhận được. Điều này là do UserA không có quyền bắt đầu truy vấn.
+<img src="hinh%2066.png" alt="Alt text"></li>
+</ol>
+<p>Bây giờ chúng ta đã biết cách sử dụng Athena Workgroups để tách biệt các truy vấn giữa người dùng, nhóm và ứng dụng. Hơn thế nữa, chúng ta cũng đã sử dụng Workgroup data limits để giới hạn lượng dữ liệu mà các workgroup có thể truy vấn.</p>
 
 
 
@@ -731,7 +820,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -746,9 +834,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -846,7 +931,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -857,25 +941,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -900,6 +965,26 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -937,10 +1022,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/3-basics/3.6-reuse-query/" title="Tái sử dụng Kết quả Truy vấn"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/4-etl/" title="ETL và Athena CTAS"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-etl/" title="ETL và Athena CTAS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/6-qs/" title="Trực quan hoá bằng QuickSight trên Amazon Athena" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

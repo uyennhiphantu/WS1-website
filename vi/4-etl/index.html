@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Kết quả và lịch sử truy vấn :: AWS System Manager</title>
+    <title>ETL và Athena CTAS :: AWS System Manager</title>
 
     
     <link href="/css/nucleus.css?1702914414" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/vi/3-basics/3.7-his-re-query/">
+  <body class="" data-url="/vi/4-etl/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -135,7 +135,7 @@
   
     
     <li data-nav-id="/vi/3-basics/" title="Athena Basics" class="dd-item 
-        parent
+        
         
         
         ">
@@ -335,7 +335,7 @@
     
     <li data-nav-id="/vi/3-basics/3.7-his-re-query/" title="Kết quả và lịch sử truy vấn" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/vi/3-basics/3.7-his-re-query/">
@@ -370,7 +370,7 @@
     
     <li data-nav-id="/vi/4-etl/" title="ETL và Athena CTAS" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/vi/4-etl/">
@@ -499,7 +499,7 @@
                   
                     
                     
-                      <option id="en" value="/3-basics/3.7-his-re-query/">English</option>
+                      <option id="en" value="/4-etl/">English</option>
                     
                   
               
@@ -513,7 +513,7 @@
                   
                     
                     
-                      <option id="vi" value="/vi/3-basics/3.7-his-re-query/" selected>Tiếng Việt</option>
+                      <option id="vi" value="/vi/4-etl/" selected>Tiếng Việt</option>
                     
                   
               
@@ -601,13 +601,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > <a href='/vi/3-basics/'>Athena Basics</a> > Kết quả và lịch sử truy vấn
-          
-        
+            <a href='/vi/'>Bắt đầu với Amazon Athena</a> > ETL và Athena CTAS
           
         
           
@@ -634,7 +628,7 @@
           
             <h1>
               
-              Kết quả và lịch sử truy vấn
+              ETL và Athena CTAS
             </h1>
           
 
@@ -643,18 +637,28 @@
 
 
 	<hr>
-<p>Amazon Athena tự động lưu trữ kết quả truy vấn và thông tin siêu dữ liệu cho mỗi truy vấn chạy ở trong kết quả truy vấn mà bạn có thể chỉ định trong Amazon S3. Nếu cần, bạn có thể truy cập vào các tệp ở đây để làm việc với chúng. Bạn cũng có thể tải xuống tệp kết quả truy vấn trực tiếp từ bảng điều khiển Athena.</p>
+<p>Thông thường, dữ liệu thô được đưa vào data lake ở định dạng csv hoặc văn bản. Các định dạng này không tối ưu để truy vấn với Athena và các công cụ khác. Nên chuyển đổi dữ liệu thành các định dạng cột như parquet. Trong bài lab này, chúng ta sẽ sử dụng truy vấn Create Table As Select ( CTAS ) để tạo bảng mới từ bảng định dạng csv hiện có. Truy vấn Create Table as Select (CTAS) sẽ tạo một bảng định dạng parquet mới có tính năng nén và phân vùng, sau đó điền dữ liệu vào bảng đó.</p>
 <ol>
-<li>Để xem lịch sử truy vấn, nhấp vào <strong>Recent queries</strong>. Chúng ta sẽ có thể xem tất cả các truy vấn được gửi trong workgroup, State, Run Time và Data scanned. Chúng ta cũng có thể chọn ID truy vấn và nhấp vào Download results để tải xuống dưới dạng dữ liệu csv.
-<img src="hinh%2048.png" alt="image"></li>
-<li>Thông tin chi tiết về từng truy vấn chạy cũng được lưu vào Athena results bucket của chúng ta. Trong thanh tìm kiếm ở đầu màn hình tìm <strong>S3</strong> và nhấp vào <strong>S3</strong> trong kết quả tìm kiếm
-<img src="hinh%2049.png" alt="image"></li>
-<li>Xác định vị trí bucket đã được tạo cho workshop. Nó sẽ được đặt tên là <strong>athena-workshop-[số tài khoản AWS của bạn]</strong> ví dụ: <em>athena-workshop-12345678910.</em> Nhấp vào tên bucket để mở nó.</li>
-<li>Có một prefix cho mỗi Saved Query đã được chạy và một thư mục Unsaved. Thư mục Unsaved lưu trữ kết quả của các truy vấn unsaved được thực hiện từ bảng điều khiển Athena. <strong>Lưu ý:</strong> <em>Nếu không thấy thư mục Unsaved, bạn có thể sao chép một trong các truy vấn trước đó vào Query tab mới trong Athena, chạy truy vấn đó rồi kiểm tra lại trong S3 bucket.</em>
-<img src="hinh%2050.png" alt="image"></li>
-<li>Nhấp vào <strong>Athena_compare_sale</strong> prefix, sau đó nhấp vào prefix Year,prefix Month và prefix Day.</li>
-<li>Bạn sẽ thấy kết quả được lưu trữ với id truy vấn.
-<img src="hinh%2051.png" alt="image"></li>
+<li>Từ  Athena query editor, chọn <strong>Saved Queries</strong> và nhấn vào ID truy vấn cho truy vấn có tên <strong>Athena_ctas_customer_sale</strong>
+<img src="hinh%2052.png" alt="Alt text"></li>
+<li>Có 2 câu lệnh truy vấn trong truy vấn ở saved query. Truy vấn đầu tiên sẽ tạo một bảng mới có tên là <strong>customer_sale_ctas</strong>. Nếu bạn nhìn vào câu lệnh truy vấn, có một số điều cần lưu ý:</li>
+</ol>
+<ul>
+<li>Định dạng được đặt thành parquet là định dạng bảng cột</li>
+<li>Chúng ta đang lưu trữ các tập tin ở vị trí bên ngoài. Trong trường hợp này, s3 bucket được tạo cho workshop ở /basics/parquet/sale_ctas/ prefix.</li>
+<li>Dữ liệu sẽ được phân chia theo năm, tháng, ngày</li>
+<li>Chúng ta đang sử dụng truy vấn SELECT để chọn dữ liệu từ các bảng hiện có để điền vào bảng mới.</li>
+</ul>
+<ol start="3">
+<li>
+<p>Đánh dấu truy vấn đầu tiên và chọn <strong>Run</strong> để tạo bảng mới. Sẽ mất vài phút để truy vấn này chạy. Khi nó hiển thị <strong>Completed</strong> trong tab kết quả truy vấn, hãy chuyển sang bước tiếp theo.
+<img src="image.png" alt="image"></p>
+</li>
+<li>
+<p>Đánh dấu truy vấn thứ hai và nhấp vào nút <strong>Run</strong> Điều này sẽ truy vấn bảng mới tạo của bạn.
+<img src="image-1.png" alt="Alt text">
+Qua đó, chúng ta đã tạo thành công một bảng mới trong data lake của mình và thêm dữ liệu vào đó bằng truy vấn Athena Create Table As Select (CTAS).</p>
+</li>
 </ol>
 
 
@@ -731,7 +735,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -746,9 +749,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -846,7 +846,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -866,8 +865,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -884,6 +881,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -937,10 +937,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/3-basics/3.6-reuse-query/" title="Tái sử dụng Kết quả Truy vấn"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/3-basics/3.7-his-re-query/" title="Kết quả và lịch sử truy vấn"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-etl/" title="ETL và Athena CTAS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/5-athena-wg/" title="Athena Workgroups" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
